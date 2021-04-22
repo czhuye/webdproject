@@ -13,6 +13,14 @@
 	$statement = $db -> prepare($query);
 	$statement -> execute();
 
+
+
+	$query_img = "SELECT * FROM validation ORDER BY RAND() LIMIT 1";
+        
+    $stmt = $db -> prepare($query_img);
+    $stmt -> execute();
+    $row_validate = $stmt->fetch()
+
 ?>
 
 <!DOCTYPE html>
@@ -48,21 +56,50 @@
                     <input type="file" name="avatar" id="avatar" />
                 </div>
                 <div>
+                    <label for="cars">Category:</label>
+                    <select name="category" id="category">
+                        <option value="advice">Advice</option>
+                        <option value="complain">Complain</option>
+                        <option value="others">Others</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="validate">Code:</label><img src="<?= $row_validate['img']?>" alt="<?= $row_validate['img']?>">
+                    <input type="text" id="validate" name="validate" placeholder="Type the words">
+                </<div>
+                    <p id = "validate_error">Please enter the correct validation code</p>
+                <div>
                     <label for="comment">Comment</label>
-                </div> 
+                </div>
                 <div>
                     <textarea id="comment" name="comment" placeholder="Your words.." rows="10" cols="50"></textarea>
                 </div>
-                <input id = "comment_submit" type="submit" value="Submit">
+
+                <button type="submit" id="comment_submit">Submit</button>
+
+                <script>
+                    $(document).ready(function(){
+                        $("#comment_submit").click(function(){
+                        var validate = $("#validate").val();
+                        var img = "<?= $row_validate['text'] ?>";
+                        if (validate != img){
+                            $("#validate_error").show();
+                            event.preventDefault();
+                        }
+                        });
+                    });
+                </script>
+
             </form>
         </div>
-	//Show
+        
         <div id = "show_comment_container">
             <h2>Users Comment order by date:</h2>
             <?php while ($row = $statement->fetch()): ?>
-                <h2><?= $row['name']?></h2>
+                <h2>Name: <?= $row['name']?></h2>
                 <p><?= $row['timestamp']?></p>
                 <img src="<?= $row['avatar']?>" alt="<?= $row['avatar']?>">
+                <h3>Category: <?= $row['category']?></h3>
                 <p><?= $row['comment']?><p>
             <?php endwhile?>
         </div>
