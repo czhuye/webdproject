@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^\.html$ :31337/comment.php [L]
