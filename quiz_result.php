@@ -77,7 +77,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>WEB DEV Project</title>
         <link rel="stylesheet" type="text/css" href="styles.css" />
          
     </head>
