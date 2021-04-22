@@ -49,14 +49,14 @@
                 </div>
                 <div>
                     <label for="comment">Comment</label>
-                </div>
+                </div> 
                 <div>
                     <textarea id="comment" name="comment" placeholder="Your words.." rows="10" cols="50"></textarea>
                 </div>
                 <input id = "comment_submit" type="submit" value="Submit">
             </form>
         </div>
-
+	//Show
         <div id = "show_comment_container">
             <h2>Users Comment order by date:</h2>
             <?php while ($row = $statement->fetch()): ?>
