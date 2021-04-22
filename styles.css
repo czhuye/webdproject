@@ -153,10 +153,11 @@ opacity: 0.9;
 opacity: 1;
 }
 
-#registration_form p#password_check_error{
+#registration_form p#password_check_error, #validate_error{
 	display: none;
 	color: red;
 }
+
 
 
 /* Pick Quiz CSS */
@@ -218,7 +219,7 @@ div#create_container{
 
 
 div#search_question_result{
-	width:30%;
+	width:50%;
 	margin:10px auto;	 
 }
 
@@ -237,7 +238,7 @@ input #comment_textarea {
 
   }
   
-  input#comment_submit {
+  #comment_submit {
 	background-color: #183b5c;
 	color: white;
 	padding: 12px 20px;
@@ -256,7 +257,7 @@ input #comment_textarea {
 
 div#show_comment_container{
 	padding: 20px;
-	width:30%;
+	width: 100%;
   	margin:10px auto;	 
 }
 
